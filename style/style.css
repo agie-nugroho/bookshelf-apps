@@ -1,0 +1,323 @@
+:root {
+  --main-color: #1e3a8a;
+  --second-color: #2563eb;
+  --aksen-color: #0f2557;
+  --background-color: #f8fafc;
+  --teks-color: #334155;
+  --border-color: #e2e8f0;
+  --finish-color: #059669;
+  --delete-color: #dc2626;
+  --edit-color: #d97706;
+  --font-family: "Nunito", sans-serif;
+  --emas-aksen: #c8a951;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #f0f2f5;
+  color: var(--teks-color);
+  line-height: 1.5;
+}
+
+header {
+  background: linear-gradient(130deg, var(--main-color), var(--second-color));
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+header h1 {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: transform 0.3s ease;
+  border-top: 5px solid var(--main-color);
+}
+
+section:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: var(--aksen-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--second-color);
+  position: relative;
+}
+
+h2::after {
+  color: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 60px;
+  height: 2px;
+  background-color: var(--emas-aksen);
+}
+
+/* styling untuk bagian form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--aksen-color);
+  font-size: 1.1rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px var(--second-color);
+}
+
+/* kelas ditambahkan di js */
+.checkbox-container {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, var(--main-color), var(--second-color));
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:hover::after {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* styling search bar nya*/
+#searchBook {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+#searchBook label {
+  flex: 1;
+}
+
+#searchBook input {
+  width: 100%;
+}
+
+#searchSubmit {
+  min-width: 120px;
+}
+
+/* styling untuk list buku */
+#incompleteBookList,
+#completeBookList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+[data-testid="bookItem"] {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-testid="bookItem"]::before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--main-color),
+    var(--second-color)
+  );
+}
+
+[data-testid="bookItem"]:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-testid="bookItemTitle"] {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--aksen-color);
+  font-weight: 700;
+}
+
+[data-testid="bookItemAuthor"],
+[data-testid="bookItemYear"] {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+[data-testid="bookItem"] div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+[data-testid="bookItemIsCompleteButton"] {
+  background: linear-gradient(to right, var(--finish-color), #20c997);
+}
+
+[data-testid="bookItemIsCompleteButton"]:hover {
+  background: linear-gradient(to right, #218838, #1ca38a);
+}
+
+[data-testid="bookItemDeleteButton"] {
+  background: linear-gradient(to right, var(--delete-color), #e74c3c);
+}
+
+[data-testid="bookItemDeleteButton"]:hover {
+  background: linear-gradient(to right, #c82333, #d62c1a);
+}
+
+[data-testid="bookItemEditButton"] {
+  background: linear-gradient(to right, var(--edit-color), #f39c12);
+  color: #212529;
+}
+
+[data-testid="bookItemEditButton"]:hover {
+  background: linear-gradient(to right, #e0a800, #e67e22);
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  #searchBook {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #incompleteBookList,
+  #completeBookList {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+}
+
+/* nambah animasi dikit */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-testid="bookItem"] {
+  animation: fadeIn 0.5s ease forwards;
+}
